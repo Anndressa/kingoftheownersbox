@@ -1,0 +1,36 @@
+package br.com.jera.reidocamarote;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ListView;
+
+public class MainActivity extends Activity implements OnCheckedChangeListener {
+	CommandmentsAdapter commandmentsAdapter;
+	
+	CheckBox photoCheckBox;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        commandmentsAdapter = new CommandmentsAdapter();
+        ((ListView)findViewById(R.id.commandments_list)).setAdapter(commandmentsAdapter);
+        photoCheckBox = (CheckBox)findViewById(R.id.photo_checkbox);
+        photoCheckBox.setOnCheckedChangeListener(this);
+        
+    }
+
+	@Override
+	public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+		
+	}
+	
+	public void share(View view){
+		
+	}
+    
+}

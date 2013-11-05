@@ -1,0 +1,10 @@
+package br.com.jera.reidocamarote;
+
+public enum Commandments {
+	DesignerClothing,
+	Car,
+	Instagram;
+	
+	String name;
+	int icon;
+}

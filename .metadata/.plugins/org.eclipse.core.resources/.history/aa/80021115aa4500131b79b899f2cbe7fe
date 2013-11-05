@@ -1,0 +1,319 @@
+package br.com.jera.reidocamarote;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.List;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import android.hardware.Camera.Parameters;
+import android.hardware.Camera.PictureCallback;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.FrameLayout;
+
+public class CameraActivity extends Activity implements OnClickListener,
+		PictureCallback, AutoFocusCallback {
+
+	private static final int PICK_IMAGE_REQUEST = 1;
+
+	private Camera mCamera;
+	private CameraPreview mPreview;
+	private String flashMode;
+	private Button flashButton;
+
+	private FrameLayout container;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_camera);
+
+		container = (FrameLayout) findViewById(R.id.camera_preview);
+
+		flashButton = (Button) findViewById(R.id.button_flash);
+
+		findViewById(R.id.button_shoot).setOnClickListener(this);
+		findViewById(R.id.button_flash).setOnClickListener(this);
+		findViewById(R.id.button_roll).setOnClickListener(this);
+
+		//TODO loadOverlayData();
+	}
+
+	@Override
+	protected void onPause() {
+		stopCamera();
+		super.onPause();
+	}
+
+	@Override
+	protected void onResume() {
+		stopCamera();
+		startCamera();
+		super.onResume();
+	}
+
+	public void startCamera() {
+		mPreview = new CameraPreview(this, this);
+		container.addView(mPreview, 0);
+		mCamera = getCameraInstance();
+		mPreview.setCamera(mCamera);
+		setFlashMode();
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (requestCode) {
+		case PICK_IMAGE_REQUEST:
+			getImage(data);
+			startCamera();
+			break;
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+	public void getImage(Intent data) {
+		if (data != null && data.getData() != null) {
+			Uri imageUri = data.getData();
+
+			// User had pick an image.
+			Cursor cursor = getContentResolver()
+					.query(imageUri,
+							new String[] { android.provider.MediaStore.Images.ImageColumns.DATA },
+							null, null, null);
+			cursor.moveToFirst();
+
+			// Link to the image
+			final String imageFilePath = cursor.getString(0);
+			cursor.close();
+
+			/*Intent intent = new Intent(this, PictureActivity.class);
+			intent.putExtra(PictureActivity.PICTURE_KEY, imageFilePath);
+			intent.putExtra(PictureActivity.PICTURE_TYPE_KEY,
+					PictureActivity.PICTURE_PATH);
+
+
+			startActivity(intent);*/
+		}
+	}
+
+	private Camera getCameraInstance() {
+		Camera camera = null;
+		try {
+			camera = Camera.open();
+			setUpCamera();
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.e("PIC_SHARE_SPORTS", "Camera exception: " + e.getMessage());
+		}
+		return camera;
+	}
+
+	public void stopCamera() {
+		if (mCamera != null) {
+			mPreview.setCamera(null);
+			mCamera.cancelAutoFocus();
+			mCamera.stopPreview();
+			mCamera.release();
+			mCamera = null;
+		}
+		container.removeView(mPreview);
+	}
+
+	public void setUpCamera() {
+		if (mCamera != null) {
+			Parameters parameters = mCamera.getParameters();
+			List<String> focusModes = parameters.getSupportedFocusModes();
+			if (focusModes.contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
+				parameters.setFocusMode(Parameters.FOCUS_MODE_AUTO);
+				mCamera.setParameters(parameters);
+			}
+		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+
+		case R.id.button_shoot:
+			takePicture();
+			break;
+		case R.id.button_flash:
+			toggleFlash();
+			break;
+		case R.id.button_roll:
+			getRollPicture();
+			break;
+		}
+
+	}
+
+	public void getRollPicture() {
+		stopCamera();
+		Intent intent = new Intent();
+		intent.setType("image/*");
+		intent.setAction(Intent.ACTION_GET_CONTENT);
+		startActivityForResult(Intent.createChooser(intent,
+				"Escolha uma foto que agregue valor"), PICK_IMAGE_REQUEST);
+	}
+
+	public void takePicture() {
+		if (mCamera != null) {
+			Parameters params = mCamera.getParameters();
+
+			List<String> focusModes = params.getSupportedFocusModes();
+			if (focusModes.contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
+				mCamera.cancelAutoFocus();
+				mCamera.autoFocus(new AutoFocusCallback() {
+					@Override
+					public void onAutoFocus(boolean success, Camera camera) {
+						mCamera.takePicture(null, null, CameraActivity.this);
+					}
+				});
+			} else {
+				mCamera.takePicture(null, null, CameraActivity.this);
+			}
+		}
+	}
+
+	public void toggleFlash() {
+		if (flashMode == null) {
+			flashMode = Parameters.FLASH_MODE_AUTO;
+			flashButton.setText("Autom‡tico");
+		} else if (flashMode.equals(Parameters.FLASH_MODE_AUTO)) {
+			flashMode = Parameters.FLASH_MODE_OFF;
+			flashButton.setText("Desligado");
+		} else if (flashMode.equals(Parameters.FLASH_MODE_OFF)) {
+			flashMode = Parameters.FLASH_MODE_ON;
+			flashButton.setText("Ligado");
+		} else {
+			flashMode = Parameters.FLASH_MODE_AUTO;
+			flashButton.setText("Autom‡tico");
+		}
+		setFlashMode();
+	}
+
+	public void setFlashMode() {
+		if (flashMode == null)
+			flashMode = Parameters.FLASH_MODE_AUTO;
+		if (mCamera != null) {
+			Parameters parameters = mCamera.getParameters();
+			parameters.setFlashMode(flashMode);
+			mCamera.setParameters(parameters);
+		}
+	}
+
+	public static int calculateInSampleSize(BitmapFactory.Options options,
+			int reqWidth, int reqHeight) {
+		// Raw height and width of image
+		final int height = options.outHeight;
+		final int width = options.outWidth;
+		int inSampleSize = 1;
+
+		if (height > reqHeight || width > reqWidth) {
+
+			// Calculate ratios of height and width to requested height and
+			// width
+			final int heightRatio = Math.round((float) height
+					/ (float) reqHeight);
+			final int widthRatio = Math.round((float) width / (float) reqWidth);
+
+			// Choose the smallest ratio as inSampleSize value, this will
+			// guarantee
+			// a final image with both dimensions larger than or equal to the
+			// requested height and width.
+			inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+		}
+
+		return inSampleSize;
+	}
+
+	@Override
+	public void onPictureTaken(byte[] data, Camera camera) {
+		stopCamera();
+
+		Bitmap bmp = decodeSampledBitmapFromResource(data);
+		if (bmp != null) {
+
+			int sideSize = Math.min(bmp.getHeight(), bmp.getWidth());
+			if(sideSize > 640){
+				sideSize = 640;
+			}
+			
+			// Setting post rotate to 90
+			Matrix mtx = new Matrix();
+			mtx.postRotate(90);
+
+			// Rotating Bitmap
+			bmp = Bitmap.createBitmap(bmp, 0, 0, sideSize, sideSize, mtx, true);
+		} else {
+			// TODO Mostrar erro e finalizar activity
+			Log.i("Picsharesports", "BMP NULL");
+			startCamera();
+			return;
+		}
+
+		/*String path = getTemporaryFilePath();
+		saveImage(bmp, path);
+
+		Intent intent = new Intent(this, PictureActivity.class);
+		intent.putExtra(PictureActivity.PICTURE_KEY, path);
+		intent.putExtra(PictureActivity.PICTURE_TYPE_KEY,
+				PictureActivity.PICTURE_PATH);
+
+
+		intent.putExtra(PictureActivity.CURRENT_FRAME_KEY,
+				framesPager.getCurrentItem());
+
+		startActivity(intent);*/
+	}
+	
+	public static Bitmap decodeSampledBitmapFromResource(byte[] data) {
+
+	    // First decode with inJustDecodeBounds=true to check dimensions
+	    final BitmapFactory.Options options = new BitmapFactory.Options();
+	    options.inJustDecodeBounds = true;
+	   
+	    BitmapFactory.decodeStream(new ByteArrayInputStream(data), null, options);
+
+	    // Calculate inSampleSize
+	    options.inSampleSize = calculateInSampleSize(options, 640, 640);
+
+	    // Decode bitmap with inSampleSize set
+	    options.inJustDecodeBounds = false;
+	    return BitmapFactory.decodeStream(new ByteArrayInputStream(data), new Rect(0,0,0,0), options);
+	}
+
+	public void saveImage(Bitmap bitmap, String filepath) {
+		File file = new File(filepath);
+
+		FileOutputStream fos = null;
+		try {
+			fos = new FileOutputStream(file);
+			if (fos != null) {
+				bitmap.compress(Bitmap.CompressFormat.JPEG, 90, fos);
+				fos.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void onAutoFocus(boolean success, Camera camera) {
+		Log.i("PicShareSports", "AutoFocus called");
+	}
+
+}

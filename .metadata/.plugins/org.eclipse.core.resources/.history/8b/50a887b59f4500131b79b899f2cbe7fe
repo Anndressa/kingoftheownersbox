@@ -1,0 +1,17 @@
+package br.com.jera.reidocamarote;
+
+public enum Commandments {
+	DesignerClothing,
+	Car,
+	OwnersBox,
+	ExclusiveService,
+	BodyGuard,
+	Champagne,
+	Celebrities,
+	Women,
+	Music,
+	Instagram;
+	
+	String name;
+	int icon;
+}

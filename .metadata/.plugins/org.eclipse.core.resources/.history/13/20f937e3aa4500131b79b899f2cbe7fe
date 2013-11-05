@@ -1,0 +1,24 @@
+package br.com.jera.reidocamarote;
+
+public enum Commandments {
+	DesignerClothing("Roupas de Grife",0),
+	Car("Carrão",0),
+	OwnersBox("Camarote",0),
+	ExclusiveService("Serviço Exclusivo",0),
+	BodyGuard("Seguranças",0),
+	Champagne("Champagne",0),
+	Celebrities("Famosos",0),
+	Women("Mulheres",0),
+	Music("Música",0),
+	Instagram("Instagram",0);
+	
+	String name;
+	int icon;
+	
+	private Commandments(String name, int icon) {
+		this.name = name;
+		this.icon = icon;
+	}
+	
+	
+}

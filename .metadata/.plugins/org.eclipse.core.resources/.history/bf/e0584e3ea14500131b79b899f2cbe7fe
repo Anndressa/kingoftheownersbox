@@ -1,0 +1,33 @@
+package br.com.jera.reidocamarote;
+
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+
+public class CommandmentsAdapter extends BaseAdapter {
+
+	@Override
+	public int getCount() {
+		return Commandments.values().length;
+	}
+
+	@Override
+	public Commandments getItem(int position) {
+		return Commandments.values()[position];
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		Commandments commandment = getItem(position);
+		if (convertView == null) {
+
+		}
+		return convertView;
+	}
+
+}
