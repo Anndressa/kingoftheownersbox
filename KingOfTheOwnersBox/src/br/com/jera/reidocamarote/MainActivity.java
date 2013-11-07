@@ -12,6 +12,8 @@ import android.widget.ScrollView;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class MainActivity extends Activity implements OnItemClickListener {
 	CommandmentsAdapter commandmentsAdapter;
@@ -29,6 +31,11 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		((ScrollView) findViewById(R.id.scrollView)).smoothScrollTo(0, 0);
 
 		Utils.applyTypeface(getWindow().getDecorView());
+		
+		AdView adView = (AdView)this.findViewById(R.id.adView);
+	    AdRequest adRequest = new AdRequest.Builder().build();
+	    adView.loadAd(adRequest);
+		
 	}
 
 	public void share(View view) {

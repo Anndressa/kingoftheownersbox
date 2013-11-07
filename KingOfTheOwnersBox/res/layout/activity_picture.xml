@@ -22,7 +22,8 @@
     <LinearLayout
         android:id="@+id/picture_controls"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@color/primary_color"
         android:gravity="center"
         android:orientation="horizontal" >
@@ -33,20 +34,6 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:src="@drawable/share_button" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/progress_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/simple_back"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone" >
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>

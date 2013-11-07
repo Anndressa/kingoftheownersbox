@@ -62,8 +62,8 @@ public class PictureActivity extends OverlayActivity implements OnClickListener 
 	private void getPictureFromPath(Bundle extras) {
 		String path = extras.getString(PICTURE_KEY);
 		if (!TextUtils.isEmpty(path)) {
-			Drawable drawable = BitmapDrawable.createFromPath(path);
-			pictureView.setImageDrawable(drawable);
+			Bitmap bitmap = decodeBitmapFromFile(path, 640, 640);
+			pictureView.setImageBitmap(bitmap);
 			imageUri = Uri.parse(path);
 		}
 	}
@@ -111,6 +111,7 @@ public class PictureActivity extends OverlayActivity implements OnClickListener 
 		}
 	}
 
+
 	public void updateImageUri() {
 		if (imageUri != null)
 			return;
@@ -134,9 +135,12 @@ public class PictureActivity extends OverlayActivity implements OnClickListener 
 		Intent share = new Intent(Intent.ACTION_SEND);
 		share.putExtra(Intent.EXTRA_STREAM, uri);
 		share.setType("image/*");
-		share.putExtra(Intent.EXTRA_TEXT, "#SouOReiDoCamarote http://bit.ly/1hOeaNG");
-		share.putExtra(Intent.EXTRA_TITLE, "#SouOReiDoCamarote http://bit.ly/1hOeaNG");
-		share.putExtra(Intent.EXTRA_SUBJECT, "#SouOReiDoCamarote http://bit.ly/1hOeaNG");
+		share.putExtra(Intent.EXTRA_TEXT,
+				"#SouOReiDoCamarote http://bit.ly/1hOeaNG");
+		share.putExtra(Intent.EXTRA_TITLE,
+				"#SouOReiDoCamarote http://bit.ly/1hOeaNG");
+		share.putExtra(Intent.EXTRA_SUBJECT,
+				"#SouOReiDoCamarote http://bit.ly/1hOeaNG");
 		startActivity(Intent.createChooser(share, "Compartilhar"));
 	}
 

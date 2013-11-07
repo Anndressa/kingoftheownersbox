@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black" >
-    
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -22,15 +22,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <include
-            layout="@layout/mask_view" />
+        <include layout="@layout/mask_view" />
 
         <LinearLayout
             android:id="@+id/camera_controls"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@color/primary_color"
             android:gravity="center"
+            android:minHeight="100dp"
             android:orientation="horizontal" >
 
             <FrameLayout

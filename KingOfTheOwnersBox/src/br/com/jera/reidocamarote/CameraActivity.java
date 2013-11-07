@@ -195,7 +195,7 @@ public class CameraActivity extends OverlayActivity implements OnClickListener,
 	public void toggleFlash() {
 		if (flashMode == null) {
 			flashMode = Parameters.FLASH_MODE_AUTO;
-			flashButton.setText("Autom‡tico");
+			flashButton.setText("AutomÃ¡tico");
 		} else if (flashMode.equals(Parameters.FLASH_MODE_AUTO)) {
 			flashMode = Parameters.FLASH_MODE_OFF;
 			flashButton.setText("Desligado");
@@ -204,7 +204,7 @@ public class CameraActivity extends OverlayActivity implements OnClickListener,
 			flashButton.setText("Ligado");
 		} else {
 			flashMode = Parameters.FLASH_MODE_AUTO;
-			flashButton.setText("Autom‡tico");
+			flashButton.setText("AutomÃ¡tico");
 		}
 		setFlashMode();
 	}
@@ -217,31 +217,6 @@ public class CameraActivity extends OverlayActivity implements OnClickListener,
 			parameters.setFlashMode(flashMode);
 			mCamera.setParameters(parameters);
 		}
-	}
-
-	public static int calculateInSampleSize(BitmapFactory.Options options,
-			int reqWidth, int reqHeight) {
-		// Raw height and width of image
-		final int height = options.outHeight;
-		final int width = options.outWidth;
-		int inSampleSize = 1;
-
-		if (height > reqHeight || width > reqWidth) {
-
-			// Calculate ratios of height and width to requested height and
-			// width
-			final int heightRatio = Math.round((float) height
-					/ (float) reqHeight);
-			final int widthRatio = Math.round((float) width / (float) reqWidth);
-
-			// Choose the smallest ratio as inSampleSize value, this will
-			// guarantee
-			// a final image with both dimensions larger than or equal to the
-			// requested height and width.
-			inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
-		}
-
-		return inSampleSize;
 	}
 
 	@Override
@@ -290,23 +265,6 @@ public class CameraActivity extends OverlayActivity implements OnClickListener,
 		return folder + "photo.jpg";
 	}
 
-	public static Bitmap decodeSampledBitmapFromResource(byte[] data) {
-
-		// First decode with inJustDecodeBounds=true to check dimensions
-		final BitmapFactory.Options options = new BitmapFactory.Options();
-		options.inJustDecodeBounds = true;
-
-		BitmapFactory.decodeStream(new ByteArrayInputStream(data), null,
-				options);
-
-		// Calculate inSampleSize
-		options.inSampleSize = calculateInSampleSize(options, 640, 640);
-
-		// Decode bitmap with inSampleSize set
-		options.inJustDecodeBounds = false;
-		return BitmapFactory.decodeStream(new ByteArrayInputStream(data),
-				new Rect(0, 0, 0, 0), options);
-	}
 
 	public void saveImage(Bitmap bitmap, String filepath) {
 		File file = new File(filepath);

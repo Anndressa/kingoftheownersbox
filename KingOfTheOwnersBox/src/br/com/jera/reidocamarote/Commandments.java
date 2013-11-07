@@ -2,15 +2,15 @@ package br.com.jera.reidocamarote;
 
 public enum Commandments {
 	DesignerClothing("Roupas de Grife","Burberry, Armani, Prada, Gucci"),
-	Car("Carrão","Tem que ser Ferrari"),
-	OwnersBox("Camarote","Quem está na pista é só mais um"),
-	ExclusiveService("Serviço Exclusivo","Alguém para servir seus convidados"),
-	BodyGuard("Seguranças","Cuidado com sua integridade física"),
-	Champagne("Champagne","Chama atenção na balada, é mais status"),
-	Celebrities("Famosos","Pessoas da mídia, celebridades"),
-	Women("Mulheres","Camarote sem mulher não faz sentido"),
-	Music("Música","House, Hip Hop, Black, Funk"),
-	Instagram("Instagram","Tem que divulgar suas fotos e vídeos");
+	Car("Carr√£o","Tem que ser Ferrari"),
+	OwnersBox("Camarote","Quem est√° na pista √© s√≥ mais um"),
+	ExclusiveService("Servi√ßo Exclusivo","Algu√©m para servir seus convidados"),
+	BodyGuard("Seguran√ßas","Cuidado com sua integridade f√≠sica"),
+	Champagne("Champagne","Chama aten√ß√£o na balada, √© mais status"),
+	Celebrities("Famosos","Pessoas da m√≠dia, celebridades"),
+	Women("Mulheres","Camarote sem mulher n√£o faz sentido"),
+	Music("M√∫sica","House, Hip Hop, Black, Funk"),
+	Instagram("Instagram","Tem que divulgar suas fotos e v√≠deos");
 	
 	String name;
 	String description;
