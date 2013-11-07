@@ -1,0 +1,24 @@
+package br.com.jera.reidocamarote;
+
+public enum Commandments {
+	DesignerClothing("Roupas de Grife","Burberry, Armani, Prada, Gucci"),
+	Car("Carrão","Tem que ser Ferrari"),
+	OwnersBox("Camarote",""),
+	ExclusiveService("Serviço Exclusivo",""),
+	BodyGuard("Seguranças",""),
+	Champagne("Champagne",""),
+	Celebrities("Famosos",""),
+	Women("Mulheres",""),
+	Music("Música",""),
+	Instagram("Instagram","");
+	
+	String name;
+	String description;
+	
+	private Commandments(String name, String description) {
+		this.name = name;
+		this.description = description;
+	}
+	
+	
+}

@@ -2,7 +2,9 @@
 <resources>
 
     <color name="simple_back">#99000000</color>
-    <color name="primary_color">#002e38</color>
-     <color name="color_2">#0697b8</color> 
+    <color name="primary_color">#435e3a</color>
+    <color name="yellow">#ffc600</color>
+    <color name="yellow_dark">#dab00b</color>
+    <color name="black_transparent">#20000000</color>
 
 </resources>

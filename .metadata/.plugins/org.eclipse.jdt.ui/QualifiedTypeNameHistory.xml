@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="br.com.jera.reidocamarote.R.layout"/>
+<fullyQualifiedTypeName name="android.widget.CompoundButton.OnCheckedChangeListener"/>
+<fullyQualifiedTypeName name="android.widget.CompoundButton"/>
+<fullyQualifiedTypeName name="br.com.jera.reidocamarote.CommandmentsAdapter"/>
+<fullyQualifiedTypeName name="android.widget.ListView"/>
+<fullyQualifiedTypeName name="br.com.jera.reidocamarote.R.id"/>
+<fullyQualifiedTypeName name="android.app.Activity"/>
+<fullyQualifiedTypeName name="br.com.jera.reidocamarote.CameraActivity"/>
+<fullyQualifiedTypeName name="br.com.jera.reidocamarote.R.drawable"/>
+<fullyQualifiedTypeName name="br.com.jera.reidocamarote.PictureActivity"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="br.com.jera.reidocamarote.OverlayActivity"/>
+<fullyQualifiedTypeName name="android.widget.ScrollView"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="br.com.jera.reidocamarote.Commandments"/>
+<fullyQualifiedTypeName name="android.widget.CheckBox"/>
+<fullyQualifiedTypeName name="br.com.jera.reidocamarote.Utils"/>
+<fullyQualifiedTypeName name="android.content.Intent"/>
+</qualifiedTypeNameHistroy>

@@ -1,23 +1,23 @@
 package br.com.jera.reidocamarote;
 
 public enum Commandments {
-	DesignerClothing("Roupas de Grife",R.drawable.ic_launcher),
-	Car("Carrão",R.drawable.ic_launcher),
-	OwnersBox("Camarote",R.drawable.ic_launcher),
-	ExclusiveService("Serviço Exclusivo",R.drawable.ic_launcher),
-	BodyGuard("Seguranças",R.drawable.ic_launcher),
-	Champagne("Champagne",R.drawable.ic_launcher),
-	Celebrities("Famosos",R.drawable.ic_launcher),
-	Women("Mulheres",R.drawable.ic_launcher),
-	Music("Música",R.drawable.ic_launcher),
-	Instagram("Instagram",R.drawable.ic_launcher);
+	DesignerClothing("Roupas de Grife","Burberry, Armani, Prada, Gucci"),
+	Car("Carrão","Tem que ser Ferrari"),
+	OwnersBox("Camarote","Quem está na pista é só mais um"),
+	ExclusiveService("Serviço Exclusivo","Alguém para servir seus convidados"),
+	BodyGuard("Seguranças","Cuidado com sua integridade física"),
+	Champagne("Champagne","Chama atenção na balada, é mais status"),
+	Celebrities("Famosos","Pessoas da mídia, celebridades"),
+	Women("Mulheres","Camarote sem mulher não faz sentido"),
+	Music("Música","House, Hip Hop, Black, Funk"),
+	Instagram("Instagram","Tem que divulgar suas fotos e vídeos");
 	
 	String name;
-	int icon;
+	String description;
 	
-	private Commandments(String name, int icon) {
+	private Commandments(String name, String description) {
 		this.name = name;
-		this.icon = icon;
+		this.description = description;
 	}
 	
 	

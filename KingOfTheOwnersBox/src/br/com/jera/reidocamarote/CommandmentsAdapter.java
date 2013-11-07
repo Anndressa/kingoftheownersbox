@@ -32,10 +32,13 @@ public class CommandmentsAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = View.inflate(parent.getContext(),
 					R.layout.commandment_item, null);
+			Utils.applyTypeface(convertView);
 		}
 
 		((TextView) convertView.findViewById(R.id.commandment_title))
 				.setText(commandment.name);
+		((TextView) convertView.findViewById(R.id.commandment_description))
+		.setText(commandment.description);
 		CheckBox checkBox = (CheckBox) convertView
 				.findViewById(R.id.commandment_check);
 		checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

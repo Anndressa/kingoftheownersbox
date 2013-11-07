@@ -51,6 +51,8 @@ public class CameraActivity extends OverlayActivity implements OnClickListener,
 		findViewById(R.id.button_roll).setOnClickListener(this);
 
 		loadOverlayData();
+
+		Utils.applyTypeface(getWindow().getDecorView());
 	}
 
 	@Override
@@ -262,7 +264,6 @@ public class CameraActivity extends OverlayActivity implements OnClickListener,
 			bmp = Bitmap.createBitmap(bmp, 0, 0, sideSize, sideSize, mtx, true);
 		} else {
 			// TODO Mostrar erro e finalizar activity
-			Log.i("Picsharesports", "BMP NULL");
 			startCamera();
 			return;
 		}
@@ -324,7 +325,6 @@ public class CameraActivity extends OverlayActivity implements OnClickListener,
 
 	@Override
 	public void onAutoFocus(boolean success, Camera camera) {
-		Log.i("PicShareSports", "AutoFocus called");
 	}
 
 }

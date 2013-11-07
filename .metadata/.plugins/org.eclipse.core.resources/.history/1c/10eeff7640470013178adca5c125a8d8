@@ -1,0 +1,31 @@
+package br.com.jera.reidocamarote;
+
+import android.graphics.Typeface;
+
+public class Utils {
+	public static final String FONT = "Fonts/Roboto.ttf";
+	public static final String FONT_BOLD = "Fonts/Roboto-Bold.ttf";
+	public static final String FONT_ITALIC = "Fonts/Roboto-Italic.ttf";
+	public static final String FONT_BOLD_ITALIC = "Fonts/Roboto-BoldItalic.ttf";
+
+	public static void setFont(android.widget.TextView txt) {
+		Typeface tf = txt.getTypeface();
+		String font = FONT;
+		if (tf != null)
+			switch (tf.getStyle()) {
+			case Typeface.BOLD:
+				font = FONT_BOLD;
+				break;
+			case Typeface.ITALIC:
+				font = FONT_ITALIC;
+				break;
+			case Typeface.BOLD_ITALIC:
+				font = FONT_BOLD_ITALIC;
+				break;
+			default:
+				font = FONT;
+				break;
+			}
+		txt.setTypeface(Typeface.createFromAsset(txt.getContext().getAssets(), font));
+	}
+}

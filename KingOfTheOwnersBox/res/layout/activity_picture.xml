@@ -8,16 +8,15 @@
     <FrameLayout
         android:id="@+id/picture_container"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/photo_heigth" >
+        android:layout_height="wrap_content" >
 
-        <ImageView
+        <br.com.jera.reidocamarote.SquareImageView
             android:id="@+id/picture"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:scaleType="centerCrop" />
 
-        <include
-            layout="@layout/mask_view" />
+        <include layout="@layout/mask_view" />
     </FrameLayout>
 
     <LinearLayout

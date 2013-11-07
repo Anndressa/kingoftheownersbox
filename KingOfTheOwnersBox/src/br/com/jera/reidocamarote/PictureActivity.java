@@ -42,6 +42,7 @@ public class PictureActivity extends OverlayActivity implements OnClickListener 
 		findViewById(R.id.button_share).setOnClickListener(this);
 
 		loadOverlayData();
+		Utils.applyTypeface(getWindow().getDecorView());
 	}
 
 	public void getPicture(Intent intent) {
@@ -131,8 +132,11 @@ public class PictureActivity extends OverlayActivity implements OnClickListener 
 
 	public void sharePicture(Uri uri) {
 		Intent share = new Intent(Intent.ACTION_SEND);
-		share.setType("image/jpeg");
 		share.putExtra(Intent.EXTRA_STREAM, uri);
+		share.setType("image/*");
+		share.putExtra(Intent.EXTRA_TEXT, "#SouOReiDoCamarote http://bit.ly/1hOeaNG");
+		share.putExtra(Intent.EXTRA_TITLE, "#SouOReiDoCamarote http://bit.ly/1hOeaNG");
+		share.putExtra(Intent.EXTRA_SUBJECT, "#SouOReiDoCamarote http://bit.ly/1hOeaNG");
 		startActivity(Intent.createChooser(share, "Compartilhar"));
 	}
 

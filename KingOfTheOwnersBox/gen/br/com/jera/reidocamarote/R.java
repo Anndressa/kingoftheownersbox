@@ -10,64 +10,99 @@ package br.com.jera.reidocamarote;
 public final class R {
     public static final class attr {
     }
+    public static final class bool {
+        /**  Enable automatic activity tracking 
+         */
+        public static final int ga_autoActivityTracking=0x7f050000;
+        /**  Enable automatic exception tracking 
+         */
+        public static final int ga_reportUncaughtExceptions=0x7f050001;
+    }
     public static final class color {
-        public static final int color_2=0x7f040002;
-        public static final int primary_color=0x7f040001;
-        public static final int simple_back=0x7f040000;
+        public static final int black_transparent=0x7f060004;
+        public static final int primary_color=0x7f060001;
+        public static final int simple_back=0x7f060000;
+        public static final int yellow=0x7f060002;
+        public static final int yellow_dark=0x7f060003;
     }
     public static final class dimen {
-        public static final int photo_heigth=0x7f050000;
+        public static final int photo_heigth=0x7f070000;
     }
     public static final class drawable {
-        public static final int btn_capture=0x7f020000;
-        public static final int btn_capture_pressed=0x7f020001;
-        public static final int btn_share=0x7f020002;
-        public static final int btn_share_pressed=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int ico_flash_off=0x7f020005;
-        public static final int ico_flash_on=0x7f020006;
-        public static final int ico_roll=0x7f020007;
-        public static final int pic_button=0x7f020008;
-        public static final int share_button=0x7f020009;
+        public static final int app_bg=0x7f020000;
+        public static final int bg_photo_transparent=0x7f020001;
+        public static final int btn_capture=0x7f020002;
+        public static final int btn_capture_pressed=0x7f020003;
+        public static final int btn_share=0x7f020004;
+        public static final int btn_share_pressed=0x7f020005;
+        public static final int checked_button=0x7f020006;
+        public static final int ic_crown=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
+        public static final int ic_ok=0x7f020009;
+        public static final int ic_ok_checked=0x7f02000a;
+        public static final int ic_ok_small=0x7f02000b;
+        public static final int ico_flash_off=0x7f02000c;
+        public static final int ico_flash_on=0x7f02000d;
+        public static final int ico_roll=0x7f02000e;
+        public static final int list_item_bg=0x7f02000f;
+        public static final int logo_small=0x7f020010;
+        public static final int pic_button=0x7f020011;
+        public static final int share_button=0x7f020012;
+        public static final int yellow_button=0x7f020013;
     }
     public static final class id {
-        public static final int button_flash=0x7f080002;
-        public static final int button_roll=0x7f080004;
-        public static final int button_share=0x7f08000a;
-        public static final int button_shoot=0x7f080003;
-        public static final int camera_controls=0x7f080001;
-        public static final int camera_preview=0x7f080000;
-        public static final int commandment_0=0x7f08000f;
-        public static final int commandment_1=0x7f080010;
-        public static final int commandment_2=0x7f080011;
-        public static final int commandment_3=0x7f080012;
-        public static final int commandment_4=0x7f080013;
-        public static final int commandment_5=0x7f080014;
-        public static final int commandment_6=0x7f080015;
-        public static final int commandment_7=0x7f080016;
-        public static final int commandment_8=0x7f080017;
-        public static final int commandment_9=0x7f080018;
-        public static final int commandment_check=0x7f08000d;
-        public static final int commandment_title=0x7f08000c;
-        public static final int commandments_list=0x7f080005;
-        public static final int picture=0x7f080008;
-        public static final int picture_container=0x7f080007;
-        public static final int picture_controls=0x7f080009;
-        public static final int picture_mask=0x7f08000e;
-        public static final int progress_container=0x7f08000b;
-        public static final int share_button=0x7f080006;
+        public static final int button_flash=0x7f090003;
+        public static final int button_roll=0x7f090005;
+        public static final int button_share=0x7f09000b;
+        public static final int button_shoot=0x7f090004;
+        public static final int camera_controls=0x7f090002;
+        public static final int camera_preview=0x7f090000;
+        public static final int commandment_0=0x7f090012;
+        public static final int commandment_1=0x7f090013;
+        public static final int commandment_2=0x7f090014;
+        public static final int commandment_3=0x7f090015;
+        public static final int commandment_4=0x7f090016;
+        public static final int commandment_5=0x7f090017;
+        public static final int commandment_6=0x7f090018;
+        public static final int commandment_7=0x7f090019;
+        public static final int commandment_8=0x7f09001a;
+        public static final int commandment_9=0x7f09001b;
+        public static final int commandment_check=0x7f09000e;
+        public static final int commandment_description=0x7f09000f;
+        public static final int commandment_title=0x7f09000d;
+        public static final int commandments_list=0x7f090007;
+        public static final int imageView1=0x7f090011;
+        public static final int picture=0x7f090001;
+        public static final int picture_container=0x7f090009;
+        public static final int picture_controls=0x7f09000a;
+        public static final int picture_mask=0x7f090010;
+        public static final int progress_container=0x7f09000c;
+        public static final int scrollView=0x7f090006;
+        public static final int share_button=0x7f090008;
     }
     public static final class layout {
         public static final int activity_camera=0x7f030000;
         public static final int activity_main=0x7f030001;
         public static final int activity_picture=0x7f030002;
         public static final int commandment_item=0x7f030003;
-        public static final int mask_view=0x7f030004;
+        public static final int mask_commandment_item=0x7f030004;
+        public static final int mask_view=0x7f030005;
     }
     public static final class string {
-        public static final int action_settings=0x7f060001;
-        public static final int app_name=0x7f060000;
-        public static final int hello_world=0x7f060002;
+        public static final int action_settings=0x7f040003;
+        public static final int app_name=0x7f040002;
+        /** 
+  This file is automatically generated by Crashlytics to uniquely 
+  identify individual builds of your Android application.
+
+  Do NOT modify, delete, or commit to source control!
+
+         */
+        public static final int com_crashlytics_android_build_id=0x7f040001;
+        /**  Replace placeholder ID with your tracking ID 
+         */
+        public static final int ga_trackingId=0x7f040000;
+        public static final int hello_world=0x7f040004;
     }
     public static final class style {
         /** 
@@ -80,10 +115,10 @@ public final class R {
             backward-compatibility can go here.
         
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f080001;
     }
 }

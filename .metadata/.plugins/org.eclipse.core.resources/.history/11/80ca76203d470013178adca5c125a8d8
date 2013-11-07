@@ -1,0 +1,7 @@
+package br.com.jera.reidocamarote;
+
+import android.widget.LinearLayout;
+
+public class SquareLinearLayout extends LinearLayout {
+
+}

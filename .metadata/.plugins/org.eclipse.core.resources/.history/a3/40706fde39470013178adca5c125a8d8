@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/picture_mask"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="bottom"
+    android:orientation="horizontal"
+    android:padding="10dp" >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="left|center_vertical"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_crown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eu sou"
+            android:textColor="@android:color/white"
+            android:textSize="28sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="O Rei do\nCamarote"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="20dp"
+            android:src="@drawable/ic_launcher"
+            android:text="CHECKLIST"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <include
+            android:id="@+id/commandment_0"
+            layout="@layout/mask_commandment_item" />
+
+        <include
+            android:id="@+id/commandment_1"
+            layout="@layout/mask_commandment_item" />
+
+        <include
+            android:id="@+id/commandment_2"
+            layout="@layout/mask_commandment_item" />
+
+        <include
+            android:id="@+id/commandment_3"
+            layout="@layout/mask_commandment_item" />
+
+        <include
+            android:id="@+id/commandment_4"
+            layout="@layout/mask_commandment_item" />
+
+        <include
+            android:id="@+id/commandment_5"
+            layout="@layout/mask_commandment_item" />
+
+        <include
+            android:id="@+id/commandment_6"
+            layout="@layout/mask_commandment_item" />
+
+        <include
+            android:id="@+id/commandment_7"
+            layout="@layout/mask_commandment_item" />
+
+        <include
+            android:id="@+id/commandment_8"
+            layout="@layout/mask_commandment_item" />
+
+        <include
+            android:id="@+id/commandment_9"
+            layout="@layout/mask_commandment_item" />
+    </LinearLayout>
+
+</LinearLayout>

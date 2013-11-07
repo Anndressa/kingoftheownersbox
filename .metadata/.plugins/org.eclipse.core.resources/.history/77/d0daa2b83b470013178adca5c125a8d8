@@ -1,0 +1,5 @@
+<resources>
+
+    <dimen name="photo_heigth">300dp</dimen>
+
+</resources>

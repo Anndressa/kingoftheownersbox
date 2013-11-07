@@ -2,21 +2,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/app_bg"
     android:orientation="vertical" >
 
-    <ListView
-        android:id="@+id/commandments_list"
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:src="@drawable/logo_small" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginRight="10dp"
         android:layout_weight="1"
-        tools:listitem="@layout/commandment_item" >
-    </ListView>
+        android:fadeScrollbars="false"
+        android:fillViewport="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:scrollbarStyle="outsideOverlay" >
 
-    <Button
-        android:id="@+id/share_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="share"
-        android:text="Agregar valor" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Mostre que você\nagrega valor na balada"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#30ffffff" />
+
+            <br.com.jera.reidocamarote.ExpandableListView
+                android:id="@+id/commandments_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:divider="#30ffffff"
+                android:dividerHeight="1dp"
+                android:listSelector="@drawable/list_item_bg"
+                tools:listitem="@layout/commandment_item" >
+            </br.com.jera.reidocamarote.ExpandableListView>
+
+            <Button
+                android:id="@+id/share_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/yellow_button"
+                android:onClick="share"
+                android:padding="15dp"
+                android:text="Agregar valor"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
